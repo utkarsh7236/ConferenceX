@@ -1,0 +1,241 @@
+@startuml
+
+title __USECASES's Class Diagram__\n
+
+  namespace  {
+    namespace ain.java {
+      namespace UseCases {
+        class main.java.UseCases.AccessibilityOptionsCreator {
+            + AccessibilityOptionsCreator()
+            + createRequest()
+            + getRequest()
+            + getTimeSent()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ain.java {
+      namespace UseCases {
+        class main.java.UseCases.BuildingManager {
+            - building : HashMap<String, Schedule2>
+            - buildingName : String
+            + BuildingManager()
+            + addRoom()
+            + addRoom()
+            + deleteEvent()
+            + getToString()
+            + removeRoom()
+            + verifyBuilding()
+            # addEvent()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ain.java {
+      namespace UseCases {
+        class main.java.UseCases.BuildingManager.ScheduleIterator {
+            - current : int
+            - keys : ArrayList<String>
+            + hasNext()
+            + next()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ain.java {
+      namespace UseCases {
+        class main.java.UseCases.EventFactory {
+            + getEvent()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ain.java {
+      namespace UseCases {
+        class main.java.UseCases.EventManager {
+            - events : HashMap<UUID, Event>
+            - panelDiscussions : HashMap<UUID, PanelDiscussion>
+            - talks : HashMap<UUID, Talk>
+            + addAttendee()
+            + addEvent()
+            + changeCapacity()
+            + deleteEvent()
+            + eventsAttending()
+            + getAttendees()
+            + getEventCapacity()
+            + getEventDuration()
+            + getEventIDNoAttendees()
+            + getEventLocation()
+            + getEventStartTime()
+            + getEventTitle()
+            + getEvents()
+            + getEventsOfSpeakerUsernameToString()
+            + removeAttendee()
+            + setSpeaker()
+            # getEvent()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ain.java {
+      namespace UseCases {
+        class main.java.UseCases.EventTableView {
+            - allEvents : ObservableList<Event>
+            - filteredListEvents : FilteredList<Event>
+            + EventTableView()
+            + constructEventData()
+            + getAllEvents()
+            + getFilteredListEvents()
+            + setCapacityColumn()
+            + setDatetimeColumn()
+            + setDurationColumn()
+            + setIdColumn()
+            + setLocationColumn()
+            + setSpeakerColumn()
+            + setTitleColumn()
+            + setTypeColumn()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ain.java {
+      namespace UseCases {
+        class main.java.UseCases.MessageCreator {
+            # receiver : String
+            + MessageCreator()
+            + getMessage()
+            + getReceiver()
+            + getTimeSent()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ain.java {
+      namespace UseCases {
+        class main.java.UseCases.Schedule {
+            - endHour : int
+            - roomCapacity : int
+            - scheduleMap : HashMap<LocalDateTime, Event>
+            - startHour : int
+            + Schedule()
+            + addEvent()
+            + editHours()
+            + eventsAttending()
+            + getEvent()
+            + getRoomCapacity()
+            + getScheduleMap()
+            + iterator()
+            + removeEvent()
+            + setRoomCapacity()
+            + toString()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ain.java {
+      namespace UseCases {
+        class main.java.UseCases.Schedule.EventIterator {
+            - current : int
+            - keys : List<LocalDateTime>
+            + hasNext()
+            + next()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ain.java {
+      namespace UseCases {
+        class main.java.UseCases.Schedule2 {
+            - endTime : LocalTime
+            - roomCapacity : int
+            - schedule : ArrayList<UUID>
+            - startTime : LocalTime
+            + Schedule2()
+            + addEvent()
+            + editHours()
+            + getRoomCapacity()
+            + getToString()
+            + removeEvent()
+            + setRoomCapacity()
+            + verify()
+            - getIndex()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ain.java {
+      namespace UseCases {
+        class main.java.UseCases.UserManager {
+            - credentialsMap : HashMap<String, Attendee>
+            + UserManager()
+            + addFriend()
+            + addTalk()
+            + cancelEnrollment()
+            + checkUsername()
+            + getCredentialsMap()
+            + getNumOfFriends()
+            + getUserRole()
+            + loginUser()
+            + registerUser()
+            + removeFriend()
+            + resetPassword()
+            + signUpForEvent()
+            # getUsername()
+        }
+      }
+    }
+  }
+  
+
+  main.java.UseCases.AccessibilityOptionsCreator o-- main.java.Entities.AccessibilityOptions : accessibilityOption
+  main.java.UseCases.BuildingManager .up.|> java.io.Serializable
+  main.java.UseCases.BuildingManager +-down- main.java.UseCases.BuildingManager.ScheduleIterator
+  main.java.UseCases.BuildingManager.ScheduleIterator .up.|> java.util.Iterator
+  main.java.UseCases.EventManager .up.|> java.io.Serializable
+  main.java.UseCases.EventTableView o-- main.java.UseCases.EventManager : eventManager
+  main.java.UseCases.MessageCreator o-- main.java.Entities.Message : message
+  main.java.UseCases.Schedule .up.|> java.io.Serializable
+  main.java.UseCases.Schedule +-down- main.java.UseCases.Schedule.EventIterator
+  main.java.UseCases.Schedule.EventIterator .up.|> java.util.Iterator
+  main.java.UseCases.Schedule2 .up.|> java.io.Serializable
+  main.java.UseCases.UserManager .up.|> java.io.Serializable
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
