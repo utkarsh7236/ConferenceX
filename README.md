@@ -68,7 +68,6 @@ A program that organizes a tech conference.
    Information is auto-saved into the data bases under package "DB" whenever an action is done
 
 
-########################################################################################################################
 ## Text UI Version of the Program
 
 The program starts by running the class named "Run"
