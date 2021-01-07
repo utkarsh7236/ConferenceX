@@ -1,5 +1,5 @@
 # ConferenceX
-A program that organizes a tech conference. 
+A program that organizes a tech conference. This software follows SOLID design principles and Clean Architecture. 
 
 ## Set Up
 
